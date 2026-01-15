@@ -1,1 +1,12 @@
-<p>notes-list works!</p>
+<button (click)="create.emit()">+ New</button>
+
+<ul>
+    @for(note of notes; track notes){
+            <li [class.active]="note.id === activeNoteId" (click)="select.emit(note.id)">
+                <strong>{{note.title}}</strong>
+                <p>{{note.content}}</p>
+                <small>{{ note.updatedAt | date:'short'}}</small>
+                <button (click)="archive.emit(note.id)">Archive</button>
+            </li>
+    }
+</ul>

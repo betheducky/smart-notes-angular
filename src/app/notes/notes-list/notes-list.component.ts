@@ -6,16 +6,15 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-notes-list',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './notes-list.component.html',
   styleUrl: './notes-list.component.scss'
 })
 export class NotesListComponent {
 
-  @Input() note!: Note;
-  @Output() selectedNoteId = new EventEmitter<string>();
-
-  onSelect(noteId: string) {
-    this.selectedNoteId.emit(noteId);
-  }
+  @Input() notes: Note[] = [];
+  @Input() activeNoteId?: string;
+  @Output() select = new EventEmitter<string>();
+  @Output() create = new EventEmitter<Note>();
+  @Output() archive = new EventEmitter<string>();
 }

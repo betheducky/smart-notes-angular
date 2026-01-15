@@ -2,6 +2,7 @@ export interface Note {
     id: string;
     title: string;
     content: string;
-    createdAt: string;
-    updatedAt: string;
+    isArchived: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }

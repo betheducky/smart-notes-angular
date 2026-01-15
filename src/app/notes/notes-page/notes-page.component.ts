@@ -15,20 +15,50 @@ import { NotesListComponent } from '../notes-list/notes-list.component';
   templateUrl: './notes-page.component.html',
   styleUrl: './notes-page.component.scss'
 })
-export class NotesPageComponent implements OnInit {
-
-  selectedNoteId: string | null = null;
-  notes: Note[] | null = null;
+export class NotesPageComponent {
 
   constructor(private noteService: NoteService){}
   
-  ngOnInit(): void {
-      this.noteService.getNotes();
-      this.noteService.getActiveNote();
+
+  get notes() {
+    return this.noteService.getNotes();
   }
 
-  handleEditNote(note: Note): void {
-    this.selectedNoteId = note.id;
+  get totalNoteCount() {
+    return this.noteService.getTotalNoteCount();
   }
+
+  get activeNote() {
+    return this.noteService.getActiveNote();
+  }
+
+  get archivedNotes() {
+    return this.noteService.getArchivedNotes();
+  }
+
+  get totalArchiveCount() {
+    return this.noteService.getArchiveCount();
+  }
+
+  onSelect(id: string) {
+    this.noteService.selectNote(id);
+  }
+
+  onCreate() {
+    this.noteService.createNote();
+  }
+
+  onToggleArchive(id: string) {
+    this.noteService.toggleArchive(id);
+  }
+
+  onSave(note: Note) {
+    this.noteService.updateNote(note);
+  }
+
+  onDelete(id: string) {
+    this.noteService.deleteNote(id);
+  }
+
 
 }

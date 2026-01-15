@@ -1,5 +1,5 @@
 
 <div>
-    <app-notes-list [notes]="notes" [activeNoteId]="activeNoteId" ></app-notes-list>
-    <app-notes-editor></app-notes-editor>
+    <app-notes-list [notes]="notes" [activeNoteId]="activeNote?.id" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onToggleArchive($event)"></app-notes-list>
+    <app-notes-editor [note]="activeNote" (save)="onSave($event)" (delete)="onDelete($event)"></app-notes-editor>
 </div>
