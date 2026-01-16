@@ -1,5 +1,14 @@
 
-<div>
-    <app-notes-list [notes]="visibleNotes" [activeNoteId]="selectedNote?.id" [noteCount]="totalNoteCount" [archiveCount]="totalArchiveCount" [activeCount]="totalActiveCount" (viewMode)="onViewChange($event)" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onArchive($event)" (resetAll)="onReset()"></app-notes-list>
-    <app-notes-editor [note]="selectedNote" (save)="onSave($event)" (delete)="onDelete($event)" (cancel)="onCancel()"></app-notes-editor>
+<div class="app__container">
+    <h2>SmartNotes</h2>
+    <h5>Notes, the smart way.</h5>
+    <p>Create, edit, and archive notes at your discretion. Data is saved to your devices localStorage, and the Reset button will delete notes permanently. Enjoy!</p>
+    <div class="notes__container">
+        <div>
+            <app-notes-list [notes]="visibleNotes" [activeNoteId]="selectedNote?.id" [noteCount]="totalNoteCount" [archiveCount]="totalArchiveCount" [activeCount]="totalActiveCount" (viewMode)="onViewChange($event)" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onArchive($event)" (resetAll)="onReset()"></app-notes-list>
+        </div>
+        <div>
+            <app-notes-editor [note]="selectedNote" (save)="onSave($event)" (delete)="onDelete($event)" (cancel)="onCancel()"></app-notes-editor>
+        </div>
+    </div>
 </div>
