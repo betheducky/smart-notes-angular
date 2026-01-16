@@ -20,7 +20,7 @@ export class NotesListComponent {
   @Input() activeCount!: number;
   @Output() viewMode = new EventEmitter<NoteViewMode>();
   @Output() select = new EventEmitter<string>();
-  @Output() create = new EventEmitter<Note>();
+  @Output() create = new EventEmitter<null>();
   @Output() archive = new EventEmitter<string>();
   @Output() resetAll = new EventEmitter<null>();
 }

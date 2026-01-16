@@ -1,7 +1,9 @@
-import { Component, OnChanges, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Note } from '../../core/models/note.model';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
+import { OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-notes-editor',
@@ -10,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './notes-editor.component.html',
   styleUrl: './notes-editor.component.scss'
 })
-export class NotesEditorComponent implements OnChanges {
+export class NotesEditorComponent implements OnChanges, OnDestroy {
 
   @Input() note:Note | null = null;
   @Output() save = new EventEmitter<Note>();
@@ -20,9 +22,12 @@ export class NotesEditorComponent implements OnChanges {
   form?: FormGroup;
   private draft!: Note;
   isDirty: boolean = false;
+  private formChangesSub?: Subscription;
 
   ngOnChanges() {
       if(!this.note) return;
+
+      this.formChangesSub?.unsubscribe();
 
       this.draft = structuredClone(this.note);
 
@@ -31,7 +36,7 @@ export class NotesEditorComponent implements OnChanges {
         content: new FormControl(this.draft.content)
       });
 
-      this.form.valueChanges.subscribe(() => {
+      this.formChangesSub = this.form.valueChanges.subscribe(() => {
         this.isDirty = true;
       });
   }
@@ -49,5 +54,9 @@ export class NotesEditorComponent implements OnChanges {
     this.isDirty = false;
 
     this.draft = structuredClone(updatedNote);
+  }
+
+  ngOnDestroy() {
+    this.formChangesSub?.unsubscribe();
   }
 }

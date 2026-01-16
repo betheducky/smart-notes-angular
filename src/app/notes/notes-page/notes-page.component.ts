@@ -20,7 +20,6 @@ export type NoteViewMode = 'active' | 'all' | 'archived';
 
 export class NotesPageComponent {
 
-  showArchived: boolean = false;
   viewMode: NoteViewMode = 'active';
 
   constructor(private noteService: NoteService){}
