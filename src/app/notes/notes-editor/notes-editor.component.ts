@@ -15,6 +15,7 @@ export class NotesEditorComponent implements OnChanges {
   @Input() note:Note | null = null;
   @Output() save = new EventEmitter<Note>();
   @Output() delete = new EventEmitter<string>();
+  @Output() cancel = new EventEmitter<null>();
 
   form?: FormGroup;
   private draft!: Note;

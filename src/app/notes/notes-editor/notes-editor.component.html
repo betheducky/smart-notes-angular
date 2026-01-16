@@ -1,8 +1,9 @@
-@if(form) {
+@if(form && note) {
 <div [formGroup]="form">
-    <input formControlName="title" value="{{note?.title}}"/>
-    <textarea formControlName="content">{{note?.content}}</textarea>
+    <input formControlName="title" value="{{note.title}}"/>
+    <textarea formControlName="content">{{note.content}}</textarea>
     <button [disabled]="!isDirty" (click)="onSave()">Save Changes</button>
+    <button (click)="cancel.emit()">Cancel</button>
     <button (click)="delete.emit(this.note!.id)">Delete</button>
 </div>
 } @else {

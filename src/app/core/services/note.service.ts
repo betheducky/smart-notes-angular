@@ -8,7 +8,7 @@ import {v4 as uuidv4} from 'uuid';
 export class NoteService {
 
   private notes: Note[] = [];
-  private activeNoteId: string | null = null;
+  private selectedNoteId: string | null = null;
 
   constructor() {
     this.load();
@@ -27,16 +27,28 @@ export class NoteService {
     return this.notes;
   }
 
+  getActiveNotes(): Note[] {
+    return this.notes.filter((note) => !note.isArchived);
+  }
+
+  getActiveNoteCount(): number {
+    return this.getActiveNotes().length;
+  }
+
   getTotalNoteCount(): number {
     return this.notes.length;
   }
 
-  getActiveNote(): Note | null {
-    return this.notes.find((note) => note.id === this.activeNoteId) ?? null;
+  getSelectedNote(): Note | null {
+    return this.notes.find((note) => note.id === this.selectedNoteId) ?? null;
   }
 
   selectNote(id: string): void {
-    this.activeNoteId = id;
+    this.selectedNoteId = id;
+  }
+
+  cancelSelected(): void {
+    this.selectedNoteId = null;
   }
 
   getArchivedNotes(): Note[] {
@@ -44,7 +56,7 @@ export class NoteService {
   }
 
   getArchiveCount(): number {
-    return this.getArchivedNotes.length;
+    return this.getArchivedNotes().length;
   }
 
   createNote(): Note {
@@ -59,7 +71,7 @@ export class NoteService {
 
     this.notes.push(newNote);
     this.save();
-    this.activeNoteId = newNote.id;
+    this.selectedNoteId = newNote.id;
     return newNote;
   }
 
@@ -68,28 +80,29 @@ export class NoteService {
     this.save();
   }
 
-  toggleArchive(noteId: string) {
+  archiveNote(noteId: string) {
     this.notes = this.notes.map((note) =>
       note.id === noteId
       ? {...note, isArchived: !note.isArchived}
       : note
     );
-    if(this.activeNoteId === noteId) {
-      this.activeNoteId = null;
+    if(this.selectedNoteId === noteId) {
+      this.selectedNoteId = null;
     }
     this.save();
   }
 
   deleteNote(noteId: string): void {
     this.notes = this.notes.filter((note) => note.id !== noteId);
-    if(this.activeNoteId === noteId) {
-      this.activeNoteId = null;
+    if(this.selectedNoteId === noteId) {
+      this.selectedNoteId = null;
     }
     this.save();
   }
 
   resetData(): void {
     localStorage.removeItem('noteData');
+    this.load();
   }
 
 }

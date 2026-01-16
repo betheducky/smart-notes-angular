@@ -1,12 +1,19 @@
 <button (click)="create.emit()">+ New</button>
-
+<button (click)="resetAll.emit()">Reset Notebook</button>
+<button (click)="viewMode.emit('archived')">Archived Notes</button>
+<button (click)="viewMode.emit('all')">All Notes</button>
+<button (click)="viewMode.emit('active')">Active Notes</button>
+<h3>Total Notes: {{noteCount}}</h3>
+<h3>Archived Notes: {{archiveCount}}</h3>
+<h3>Active Notes: {{activeCount}}</h3>
 <ul>
     @for(note of notes; track notes){
-            <li [class.active]="note.id === activeNoteId" (click)="select.emit(note.id)">
+            <li [class.active]="note.id === activeNoteId">
                 <strong>{{note.title}}</strong>
                 <p>{{note.content}}</p>
                 <small>{{ note.updatedAt | date:'short'}}</small>
-                <button (click)="archive.emit(note.id)">Archive</button>
+                <button (click)="select.emit(note.id)">Edit</button>
+                <button (click)="archive.emit(note.id)">{{!note.isArchived ? "Archive" : "Activate"}}</button>
             </li>
     }
 </ul>

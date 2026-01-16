@@ -1,5 +1,5 @@
 
 <div>
-    <app-notes-list [notes]="notes" [activeNoteId]="activeNote?.id" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onToggleArchive($event)"></app-notes-list>
-    <app-notes-editor [note]="activeNote" (save)="onSave($event)" (delete)="onDelete($event)"></app-notes-editor>
+    <app-notes-list [notes]="visibleNotes" [activeNoteId]="selectedNote?.id" [noteCount]="totalNoteCount" [archiveCount]="totalArchiveCount" [activeCount]="totalActiveCount" (viewMode)="onViewChange($event)" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onArchive($event)" (resetAll)="onReset()"></app-notes-list>
+    <app-notes-editor [note]="selectedNote" (save)="onSave($event)" (delete)="onDelete($event)" (cancel)="onCancel()"></app-notes-editor>
 </div>
