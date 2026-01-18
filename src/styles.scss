@@ -1,4 +1,4 @@
-
+@use 'styles/breakpoints';
 
 html, body {
     height: 100vh;
@@ -6,7 +6,7 @@ html, body {
 }
 
 body {
-    background-color: #031927;
+    background-image: radial-gradient(#94A89A 25%, #797D81);
 }
 
 header {
