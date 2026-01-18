@@ -1,8 +1,29 @@
 .app__container {
 
     margin: 0 auto;
+    padding: 2rem 0 1rem;
     text-align: center;
 
+    .app__font--white {
+        color: ghostwhite;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        margin-top: -1rem;
+        font-size: 1rem;
+        font-style: italic;
+    }
+
+    .instructions {
+        font-size: 1.25rem;
+        margin: auto;
+        padding: 1rem 0 2rem;
+        width: 50%;
+    }
 
     .notes__container {
 
@@ -13,8 +34,10 @@
 
         div {
             width: 40rem;
-            background-color: white;
-            border-radius: 1rem;
+            background-color: ghostwhite;
+            border-radius: .75rem;
+            height: 35rem;
+            padding: 2rem;
         }
     }
 }

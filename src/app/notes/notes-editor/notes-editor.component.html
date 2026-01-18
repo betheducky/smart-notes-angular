@@ -1,11 +1,17 @@
+<header>Editor</header>
+<section>
 @if(form && note) {
-<div [formGroup]="form">
-    <input formControlName="title"/>
-    <textarea formControlName="content"></textarea>
-    <button [disabled]="!isDirty" (click)="onSave()">Save Changes</button>
-    <button (click)="cancel.emit()">Cancel</button>
-    <button (click)="delete.emit(this.note!.id)">Delete</button>
-</div>
+    <div [formGroup]="form" class="editor__form">
+        <input formControlName="title"/>
+        <textarea formControlName="content"></textarea>
+        <div>
+            <button [disabled]="!isDirty" (click)="onSave()">Save Changes</button>
+            <button (click)="cancel.emit()">Cancel</button>
+        </div>
+        
+        <button (click)="delete.emit(this.note!.id)">Delete (cannot be undone!)</button>
+    </div>
 } @else {
-<p>Select a note to begin.</p>
+    <p>Select a note to begin.</p>
 }
+</section>

@@ -1,19 +1,26 @@
-<button (click)="create.emit()">+ New</button>
-<button (click)="resetAll.emit()">Reset Notebook</button>
-<button (click)="viewMode.emit('archived')">Archived Notes</button>
-<button (click)="viewMode.emit('all')">All Notes</button>
-<button (click)="viewMode.emit('active')">Active Notes</button>
-<h3>Total Notes: {{noteCount}}</h3>
-<h3>Archived Notes: {{archiveCount}}</h3>
-<h3>Active Notes: {{activeCount}}</h3>
-<ul>
+<header>Notebook</header>
+<section class="notebook__action-btn__container">
+        <button (click)="create.emit()">+ New Note</button>
+        <div class="notebook__divider">|</div>
+        <button (click)="viewMode.emit('all')">Show All</button>
+        <button (click)="viewMode.emit('active')">Show Active</button>
+        <button (click)="viewMode.emit('archived')">Show Archived</button>
+</section>
+<section class="count__container">
+    <h3>Total Notes: {{noteCount}}</h3>
+    <h3>Active Notes: {{activeCount}}</h3>
+    <h3>Archived Notes: {{archiveCount}}</h3>
+</section>
+<section class="note-item__container">
     @for(note of notes; track notes){
-            <li [class.active]="note.id === activeNoteId">
-                <strong>{{note.title}}</strong>
+            <div [class.active]="note.id === activeNoteId" class="note-item">
+                <p><strong>{{note.title}}</strong></p>
                 <p>{{note.content}}</p>
                 <small>{{ note.updatedAt | date:'short'}}</small>
-                <button (click)="select.emit(note.id)">Edit</button>
+                <button (click)="select.emit(note.id)" [disabled]="note.isArchived">Edit</button>
                 <button (click)="archive.emit(note.id)">{{!note.isArchived ? "Archive" : "Activate"}}</button>
-            </li>
+            </div>
     }
-</ul>
+</section>
+<button (click)="resetAll.emit()" class="notebook__reset-btn">Reset Notebook</button>
+

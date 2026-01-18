@@ -1,0 +1,40 @@
+.notebook__action-btn__container {  
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem 0;
+}
+
+.count__container {
+    display: flex;
+    justify-content: space-evenly;
+
+    h3 {
+        border: 1px solid black;
+        border-radius: .25rem;
+        padding: .5rem;
+    }
+}
+
+.note-item__container {
+    height: 20rem;
+    width: 40rem;
+    overflow: scroll;
+
+    .note-item {
+        width: 40rem;
+        min-height: 3rem;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+
+        p {
+            max-width: 10rem;
+        }
+    }
+}
+
+.notebook__reset-btn {
+    margin-top: 1.5rem;
+}
+

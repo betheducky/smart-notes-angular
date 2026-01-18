@@ -1,0 +1,24 @@
+.editor__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    overflow: scroll;
+    height: 30rem;
+
+    input, textarea, button, div {
+        width: 100%;
+        max-width: 30rem;
+    }
+    input, textarea {
+        padding: .5rem;
+    }
+
+    textarea {
+        height: 8rem;
+    }
+
+    div > button {
+        margin-top: .5rem;
+    }
+}
