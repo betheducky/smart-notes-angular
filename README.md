@@ -1,6 +1,6 @@
-## SmartNotesAngular
+# SmartNotesAngular
 
-### 📌 Overview
+## Overview
 
 This project is a lightweight notes application built with **Angular standalone components**. The focus of the app is not visual polish, but **clean architecture, component separation, and state management** using Angular best practices.
 
@@ -8,7 +8,7 @@ The app demonstrates how to structure a medium-complexity frontend feature with 
 
 ---
 
-### ✨ Features
+## Features
 
 - Create, edit, archive, and delete notes
 - Toggle between **Active**, **Archived**, and **All** notes
@@ -19,7 +19,7 @@ The app demonstrates how to structure a medium-complexity frontend feature with 
 
 ---
 
-### 🧠 Architectural Decisions
+## Architectural Decisions
 
 This project intentionally emphasizes **code organization and data flow** over UI complexity.
 
@@ -45,7 +45,7 @@ Key design choices:
 
 ---
 
-### 🛠️ Tech Stack
+## Tech Stack
 
 - **Angular** (standalone components)
 - **TypeScript**
@@ -57,7 +57,7 @@ Key design choices:
 
 ---
 
-### 🎯 Why This Project Exists
+## Why This Project Exists
 
 This app was built to:
 
@@ -70,7 +70,29 @@ Visual design was intentionally kept minimal to prioritize readability and archi
 
 ---
 
-### Future Enhancements
+## Local Setup
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/betheducky/smart-notes-angular.git
+cd smart-notes-angular
+```
+
+### 2. Install dependencies
+```bash
+npm install
+```
+
+### 3. Start the development server
+```bash
+ng serve
+```
+
+Navigate to `http://localhost:4200/` or your specified local development server URL. The application will automatically reload if you change any of the source files.
+
+---
+
+## Future Enhancements
 
 - Add authentication
 - Improve visual design with a component library
