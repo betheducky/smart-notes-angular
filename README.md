@@ -1,27 +1,77 @@
-# SmartNotesAngular
+## SmartNotesAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+### 📌 Overview
 
-## Development server
+This project is a lightweight notes application built with **Angular standalone components**. The focus of the app is not visual polish, but **clean architecture, component separation, and state management** using Angular best practices.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The app demonstrates how to structure a medium-complexity frontend feature with clear ownership of data, predictable UI behavior, and maintainable code.
 
-## Code scaffolding
+---
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### ✨ Features
 
-## Build
+- Create, edit, archive, and delete notes
+- Toggle between **Active**, **Archived**, and **All** notes
+- Inline note editing with dirty-state detection
+- Centralized state management via a service
+- Responsive layout with reusable SCSS breakpoints
+- Fully componentized UI (list vs editor separation)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+### 🧠 Architectural Decisions
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This project intentionally emphasizes **code organization and data flow** over UI complexity.
 
-## Running end-to-end tests
+Key design choices:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- **Smart page / dumb components pattern**
+    - `NotesPageComponent` owns application state and orchestration
+    - `NotesListComponent` handles list display and UI interactions
+    - `NotesEditorComponent` manages form state and editing logic
+- **Unidirectional data flow**
+    - Data flows down via `@Input`
+    - User actions flow up via `@Output` events
+- **Service-driven state**
+    - All note data and mutations are centralized in a `NoteService`
+    - Components remain stateless and predictable
+- **Standalone components**
+    - No `NgModule` usage
+    - Modern Angular setup aligned with current best practices
+- **Local device storage for simple data persistence**
+    - Keeps sthe app fully client-side
+    - Allows accessible demonstration of core app function
+    - Employs effective compartmentalization of UI concerns vs data handling
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### 🛠️ Tech Stack
+
+- **Angular** (standalone components)
+- **TypeScript**
+- **Reactive Forms**
+- **SCSS**
+    - Shared breakpoint mixins
+    - Component-scoped styles
+- No external UI libraries (intentional)
+
+---
+
+### 🎯 Why This Project Exists
+
+This app was built to:
+
+- Demonstrate **Angular component architecture**
+- Show thoughtful **state ownership and data flow**
+- Highlight **TypeScript usage and separation of concerns**
+- Serve as a clean, understandable example for recruiters and reviewers
+
+Visual design was intentionally kept minimal to prioritize readability and architectural clarity.
+
+---
+
+### Future Enhancements
+
+- Add authentication
+- Improve visual design with a component library
+- Introduce animations or drag-and-drop ordering
