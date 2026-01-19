@@ -5,16 +5,35 @@
         justify-content: center;
         gap: 1rem;
         padding: 1rem 0;
+
+        @include respond(sm) {
+            align-items: center;
+            gap: .25rem;
+        }
+
+        .notebook__divider {
+            @include respond(sm) {
+                font-size: 2rem;
+            }
+        }
 }
 
 .count__container {
     display: flex;
     justify-content: space-evenly;
 
+     @include respond(sm) {
+        flex-direction: column;
+     }
+
     h3 {
         border: 1px solid black;
         border-radius: .25rem;
         padding: .5rem;
+
+        @include respond(sm) {
+            margin: 0 0 1rem 0;
+        }
     }
 }
 
@@ -22,13 +41,57 @@
     height: 20rem;
     width: 40rem;
     overflow: scroll;
+    background-color: rgba(0, 0, 0, 0.023);
+
+    @include respond(sm) {
+        width: 16rem !important;
+        height: 18rem;
+        padding: .5rem 0 !important;
+    }
+
+    @include respond(md) {
+        padding: .5rem;
+    }
+
+    @include respond(lg) {
+        padding: .5rem;
+        width: 39rem;
+    }
+
 
     .note-item {
-        width: 40rem;
+        width: 39rem;
         min-height: 3rem;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        border: .25px solid black;
+        border-radius: .5rem;
+        margin: auto;
+        margin-top: .5rem;
+        background-color: ghostwhite;
+
+        @include respond(sm) {
+            flex-direction: column;
+            width: 15rem !important;
+            margin-bottom: 1rem;
+            gap: .5rem;
+            padding: 1rem 0;
+        }
+
+        @include respond(md) {
+            margin-top: .5rem;
+        }
+
+        @include respond(lg) {
+            margin-top: .5rem;
+            width: 38rem;
+        }
+
+        @include respond(xl) {
+            margin-top: .5rem;
+            width: 38rem;
+        }
 
         p {
             max-width: 10rem;
@@ -40,5 +103,9 @@
 
 .notebook__reset-btn {
     margin-top: 1.5rem;
+}
+
+.active {
+    background-color: rgb(251, 255, 192) !important;
 }
 

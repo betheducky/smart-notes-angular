@@ -3,7 +3,7 @@
     <h1 class="app__font--white title">SmartNotes</h1>
     <p class="app__font--white subtitle">(notes, the smart way)</p>
     <p class="app__font--white instructions">Create, edit, and archive notes at your discretion. Note data is saved to your devices local storage. The reset button will delete notes permanently. Enjoy!</p>
-    <div class="notes__container">
+    <div class="notes__container" [class.active]="selectedNote">
         <div>
             <app-notes-list [notes]="visibleNotes" [activeNoteId]="selectedNote?.id" [noteCount]="totalNoteCount" [archiveCount]="totalArchiveCount" [activeCount]="totalActiveCount" (viewMode)="onViewChange($event)" (select)="onSelect($event)" (create)="onCreate()"  (archive)="onArchive($event)" (resetAll)="onReset()"></app-notes-list>
         </div>

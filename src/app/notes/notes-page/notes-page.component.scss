@@ -2,9 +2,11 @@
 
 .app__container {
 
-    margin: 0 auto;
+    margin: auto;
     padding: 2rem 0 1rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 
     .app__font--white {
         color: ghostwhite;
@@ -33,10 +35,22 @@
         flex-direction: row;
         justify-content: center;
         gap: 1rem;
+        margin: auto;
 
         @include respond(sm) {
-        flex-direction: column;
+            flex-direction: column;
     }
+        @include respond(md) {
+            flex-direction: column;
+        }
+
+        @include respond(lg) {
+            flex-direction: column;
+        }
+
+        @include respond(xl) {
+            flex-direction: column;
+        }
 
         div {
             width: 40rem;
@@ -44,6 +58,36 @@
             border-radius: .75rem;
             height: 35rem;
             padding: 2rem;
+
+            @include respond(sm) {
+                width: 16rem;
+                height: 40rem;
+            }
+
+            @include respond(md) {
+                padding-bottom: 3rem;
+            }
+
+            @include respond(lg) {
+                padding-bottom: 3rem;
+            }
+        }
+
+        &.active {
+            flex-direction: row-reverse;
+
+            @include respond(sm){
+                flex-direction: column-reverse;
+            }
+
+            @include respond(md){
+                flex-direction: column-reverse;
+            }
+
+            @include respond(lg){
+                flex-direction: column-reverse;
+            }
         }
     }
 }
+

@@ -1,3 +1,5 @@
+@use '../../../styles/breakpoints' as *;
+
 .editor__form {
     display: flex;
     flex-direction: column;
@@ -9,6 +11,10 @@
     input, textarea, button, div {
         width: 100%;
         max-width: 30rem;
+        
+        @include respond(sm) {
+            width: 80%;
+        }
     }
     input, textarea {
         padding: .5rem;
